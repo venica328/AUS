@@ -1,0 +1,73 @@
+﻿  form_data.cpp
+  graph_data.cpp
+  form_main.cpp
+  data_routines.cpp
+  dijkstra.cpp
+  bi_star_graph.cpp
+  forward_star_graph.cpp
+  graph.cpp
+  graph_with_registration.cpp
+  memory_routines.cpp
+  sort.cpp
+  vector.cpp
+  action_history.cpp
+  panel_action_history.cpp
+  color_scheme.cpp
+  structure_info_holder.cpp
+  panel_logger.cpp
+  ui_logger.cpp
+  controls.cpp
+  panel_controls.cpp
+  Generating Code...
+  Compiling...
+  panel_performance_chart.cpp
+  performance.cpp
+  panel_sorting.cpp
+  ui_routines.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.28.29333\include\xstring(2468,23): warning C4244: 'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.28.29333\include\xstring(2479): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.28.29333\include\xstring(2479): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.28.29333\include\xstring(2459): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.28.29333\include\xstring(2459): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Iter=wchar_t *
+          ]
+D:\3.LS\AUS 1 - Algoritmy a údajové štruktúry 1\AUS\AUS\ui\ui_routines.cpp(139): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+D:\3.LS\AUS 1 - Algoritmy a údajové štruktúry 1\AUS\AUS\ui\ui_routines.cpp(139): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+  structure.cpp
+  ds_routines.cpp
+  ds_structure_factory.cpp
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  Generating Code...
+  form_data.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  form_data.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  DataStructures.vcxproj -> D:\3.LS\AUS 1 - Algoritmy a údajové štruktúry 1\AUS\AUS\x64\Debug\DataStructures.exe
