@@ -90,6 +90,8 @@ namespace structures
 	{
 	}
 
+	//robime dereferencovanie new Vector(*(other.vector_))
+	//aby sme nerobili kopiu smernika ale kopiu vektora
 	template<typename T>
 	Array<T>::Array(const Array<T>& other) :
 		vector_(new Vector(*(other.vector_))), 
@@ -100,7 +102,9 @@ namespace structures
 	template<typename T>
 	Array<T>::~Array()
 	{
-		//TODO 02: Array
+		delete vector_;
+		vector_ = nullptr;
+		size_ = 0;
 	}
 
 	template<typename T>
@@ -122,8 +126,16 @@ namespace structures
 	template<typename T>
 	Array<T>& Array<T>::operator=(const Array<T>& other)
 	{
-		//TODO 02: Array
-		throw std::exception("Array<T>::operator=: Not implemented yet.");
+		if (this != &other)
+		{
+			if (size_ != other.size_)
+			{
+				throw std::invalid_argument("Array´s sizes are different");
+			}
+			//dereferencovali sme na objekty
+			*vector_ = *(other.vector_);
+		}
+		return *this;
 	}
 	
 	template<typename T>
@@ -135,36 +147,43 @@ namespace structures
 	template<typename T>
 	T& Array<T>::operator[](const int index)
 	{
-		//TODO 02: Array
-		throw std::exception("Array<T>::operator[]: Not implemented yet.");
+		//1.pomocou mapovacej funkcie prepocitam index z pola na index vo vektore
+		//2. dostaneme sa tam cez metodu getbytepointer
+		//3. nechcem Bity tak si smernik pretypujem a pozriem sa co je vo vnutri
+		int vectorIndex = mapFunction(index);
+		byte* vectorPointer = vector_->getBytePointer(vectorIndex);
+		T* typeVectorPointer = reinterpret_cast<T*>(vectorPointer);
+		return *typeVectorPointer;
 	}
 
 	template<typename T>
 	const T Array<T>::operator[](const int index) const
 	{
-		//TODO 02: Array
-		throw std::exception("Array<T>::operator[]: Not implemented yet.");
+		//to iste ako horna funkcia akurat je to zapisane v 1 riadku
+		return *(reinterpret_cast<T*>(vector_->getBytePointer(mapFunction(index))));
 	}
 
 	template<typename T>
 	inline bool Array<T>::operator==(const Array<T>& other) const
 	{
-		//TODO 02: Array
-		throw std::exception("Array<T>::operator==: Not implemented yet.");
+		//nemusime porovnavat velkost pola pretoze ak dva vectory by neboli rovnake tak ani polia by neboli
+		return *vector_ == *(other.vector_);
 	}
 
 	template<typename T>
 	void Array<T>::copy(const Array<T>& src, const int srcStartIndex, Array<T>& dest, const int destStartIndex, const int length)
 	{
-		//TODO 02: Array
-		throw std::exception("Array<T>::copy: Not implemented yet.");
+		if(length > 0) 
+		{
+			Vector::copy(*src.vector_, mapFunction(srcStartIndex), *dest.vector_, mapFunction(destStartIndex), length * sizeof(T));
+		}
 	}
 
 	template<typename T>
 	inline int Array<T>::mapFunction(const int index) const
 	{
-		//TODO 02: Array
-		throw std::exception("Array<T>::mapFunction: Not implemented yet.");
+		DSRoutines::rangeCheckExcept(index, size_, "Invalid index in Array!");
+		return index * sizeof(T);
 	}
 }
 

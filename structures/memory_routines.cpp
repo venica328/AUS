@@ -45,21 +45,18 @@ namespace structures {
 
 	byte & MemoryRoutines::byteNthBitTo0(byte & B, int n)
 	{
-		//TODO 01: MemoryRoutines
 		B ^= (0 ^ B) & (1UL << n);
 		return B;
 	}
 
 	byte & MemoryRoutines::byteNthBitTo1(byte & B, int n)
 	{
-		//TODO 01: MemoryRoutines
 		B ^= (-1 ^ B) & (1UL << n);
 		return B;
 	}
 
 	byte & MemoryRoutines::byteNthBitToggle(byte & B, int n)
 	{
-		//TODO 01: MemoryRoutines
 		if((B >> n) & 1) { 
 			byteNthBitTo0(B,n);
 		}
