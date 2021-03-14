@@ -144,9 +144,11 @@ namespace structures
 		List(),
 		array_(new Array<T>(4)),
 		size_(0)
+		//ake velke bude pole? to nam nikto nepovie, preto sme tam dali 4 je to na nas ake bude velke
 	{
 	}
 
+	//kopirovaci konstruktor
 	template<typename T>
 	inline ArrayList<T>::ArrayList(const ArrayList<T>& other):
 		List(),
@@ -158,7 +160,9 @@ namespace structures
 	template<typename T>
 	inline ArrayList<T>::~ArrayList()
 	{
-		//TODO 03: ArrayList
+		delete array_;
+		array_ = nullptr;
+		size_ = 0;
 	}
 
 	template<typename T>
@@ -183,67 +187,112 @@ namespace structures
 		return *this;
 	}
 
+	//operator priradenia, priraduje 2 arraylisty
 	template<typename T>
 	inline ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>& other)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::operator=: Not implemented yet.");
+		if (this != &other)
+		{
+			size_ = other.size_;
+			delete array_;
+			array_ = new Array<T>(*(other.array_));
+		}
+		return *this;
 	}
 
 	template<typename T>
-	inline T & ArrayList<T>::operator[](const int index)
+	inline T& ArrayList<T>::operator[](const int index)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::operator[]: Not implemented yet.");
+		//vyzaduje si to toto osetrenie, keby mal arraylist inu velkost ako array
+		DSRoutines::rangeCheckExcept(index, size_, "Invalid index in ArrayList!");
+		return (*array_)[index];
 	}
 
 	template<typename T>
 	inline const T ArrayList<T>::operator[](const int index) const
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::operator[]: Not implemented yet.");
+		DSRoutines::rangeCheckExcept(index, size_, "Invalid index in ArrayList!");
+		return (*array_)[index];
 	}
 
 	template<typename T>
-	inline void ArrayList<T>::add(const T & data)
+	inline void ArrayList<T>::add(const T& data)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::add: Not implemented yet.");
+		if (array_->size() == size_)
+		{
+			enlarge();
+		}
+		(*array_)[static_cast<int>(size_)] = data;
+		size_++;
+
 	}
 
 	template<typename T>
-	inline void ArrayList<T>::insert(const T & data, const int index)
+	inline void ArrayList<T>::insert(const T& data, const int index)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::insert: Not implemented yet.");
+		//dalsi sposob vkladania prvkov do arraylistu
+		//princip je co vlozit a na aku poziciu
+		if (index == static_cast<int>(size_))
+		{
+			add(data);
+		}
+		else
+		{
+			DSRoutines::rangeCheckExcept(index, size_, "Invalid index in ArrayList!");
+			if (array_->size() == size_)
+			{
+				enlarge();
+			}
+			Array<T>::copy(*array_, static_cast<int>(index), *array, static_cast<int>(index + 1), static_cast<int>(size_ - index));
+			(*array_)[index] = data;
+			size_++;
+		}
 	}
 
 	template<typename T>
-	inline bool ArrayList<T>::tryRemove(const T & data)
+	inline bool ArrayList<T>::tryRemove(const T& data)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::tryRemove: Not implemented yet.");
+		//pokusim sa vymazat data zo zoznamu, nejaky prvok
+		//1. musime ho najst
+		//2.zavolam metodu get index of
+		//ak index je -1 to znamena ze som nic nenasla a vratim false
+		//inak zavolam metodu removeat
+		int index = getIndexOf(data);
+		if (index == -1)
+		{
+			return false;
+		}
+		removeAt(index);
+		return true;
 	}
 
 	template<typename T>
 	inline T ArrayList<T>::removeAt(const int index)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::removeAt: Not implemented yet.");
+		T result = (*this)[index];
+		Array<T>::copy(*array_, static_cast<int>(index + 1), *array_, static_cast<int>(index), static_cast<int>(size_ - index - 1));
+		size_--;
+		return result;
+
 	}
 
 	template<typename T>
-	inline int ArrayList<T>::getIndexOf(const T & data)
+	inline int ArrayList<T>::getIndexOf(const T& data)
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::getIndexOf: Not implemented yet.");
+		for (int i = 0; i < static_cast<int>(size_); i++)
+		{
+			if ((*this)[i] == data)
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	template<typename T>
 	inline void ArrayList<T>::clear()
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::clear: Not implemented yet.");
+		size_ = 0;
 	}
 
 	template<typename T>
@@ -263,8 +312,17 @@ namespace structures
 	template<typename T>
 	inline void ArrayList<T>::enlarge()
 	{
-		//TODO 03: ArrayList
-		throw std::exception("ArrayList<T>::enlarge: Not implemented yet.");
+		//ako pole zvacsit?
+		//vytvor nove pole
+		//musi byt vacsie bud o konstantu alebo o dvojnasobok terajsieho pola...
+		//skopiruj vsetko co bolo v starom poli
+		//zmaz stare pole
+		//smernik nastav na nove pole
+		Array<T>* novePole = new Array<T>(2 * size_);
+		Array<T>::copy(*array_, 0, *novePole, 0, static_cast<int>(size_));
+		delete array_;
+		array_ = novePole;
+	
 	}
 
 	template<typename T>
