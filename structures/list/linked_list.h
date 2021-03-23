@@ -439,34 +439,32 @@ namespace structures
 	template<typename T>
 	inline LinkedList<T>::LinkedListIterator::~LinkedListIterator()
 	{
-		//TODO 04: LinkedList<T>::LinkedListIterator
+		position_ = nullptr;
 	}
 
 	template<typename T>
 	inline Iterator<T>& LinkedList<T>::LinkedListIterator::operator=(const Iterator<T>& other)
 	{
-		//TODO 04: LinkedList<T>::LinkedListIterator
-		throw std::exception("LinkedList<T>::LinkedListIterator::operator=: Not implemented yet.");
+		position_ = dynamic_cast<const LinkedListIterator&>(other).position_;
+		return *this;
 	}
 
 	template<typename T>
 	inline bool LinkedList<T>::LinkedListIterator::operator!=(const Iterator<T>& other)
 	{
-		//TODO 04: LinkedList<T>::LinkedListIterator
-		throw std::exception("LinkedList<T>::LinkedListIterator::operator!=: Not implemented yet.");
+		return position_ != dynamic_cast<const LinkedListIterator&>(other).position_;
 	}
 
 	template<typename T>
 	inline const T LinkedList<T>::LinkedListIterator::operator*()
 	{
-		//TODO 04: LinkedList<T>::LinkedListIterator
-		throw std::exception("LinkedList<T>::LinkedListIterator::operator*: Not implemented yet.");
+		return position_->accessData();
 	}
 
 	template<typename T>
 	inline Iterator<T>& LinkedList<T>::LinkedListIterator::operator++()
 	{
-		//TODO 04: LinkedList<T>::LinkedListIterator
-		throw std::exception("LinkedList<T>::LinkedListIterator::operator++: Not implemented yet.");
+		position_ = position_->getNext();
+		return *this;
 	}
 }
