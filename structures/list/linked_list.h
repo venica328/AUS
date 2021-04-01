@@ -401,7 +401,7 @@ namespace structures
 				delItem = first_;
 			}
 			size_ = 0;
-			last = nullptr;
+			last_ = nullptr;
 		}
 	}
 

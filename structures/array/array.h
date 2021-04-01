@@ -175,7 +175,7 @@ namespace structures
 	{
 		if(length > 0) 
 		{
-			Vector::copy(*src.vector_, mapFunction(srcStartIndex), *dest.vector_, mapFunction(destStartIndex), length * sizeof(T));
+			Vector::copy(*src.vector_, src.mapFunction(srcStartIndex), *dest.vector_, dest.mapFunction(destStartIndex), length * sizeof(T));
 		}
 	}
 

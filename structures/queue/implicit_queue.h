@@ -161,7 +161,7 @@ namespace structures
 		//pridavame ak sa tam zmesti a kam ho mame pridat
 		if (size_ < array_->size())
 		{
-			data = (*array_)[(startIndex_ + size_) % array_->size()];
+			(*array_)[(startIndex_ + size_) % array_->size()] = data;
 			size_++;
 		}
 		else

@@ -243,7 +243,7 @@ namespace structures
 			{
 				enlarge();
 			}
-			Array<T>::copy(*array_, static_cast<int>(index), *array, static_cast<int>(index + 1), static_cast<int>(size_ - index));
+			Array<T>::copy(*array_, static_cast<int>(index), *array_, static_cast<int>(index + 1), static_cast<int>(size_ - index));
 			(*array_)[index] = data;
 			size_++;
 		}
