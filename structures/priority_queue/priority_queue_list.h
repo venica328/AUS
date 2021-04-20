@@ -114,9 +114,9 @@ namespace structures
 		if (this != &other)
 		{
 			clear();
-			for (PriorityQueueList<T>* item : *(other.list_))
+			for (PriorityQueueItem<T>* item : *(other.list_))
 			{
-				list_->add(new PriorityQueueList<T>(*item));
+				list_->add(new PriorityQueueItem<T>(*item));
 			}
 		}
 		return *this;
@@ -131,7 +131,7 @@ namespace structures
 	template<typename T>
 	inline void PriorityQueueList<T>::clear()
 	{
-		for (PriorityQueueList<T>* item : *(list_))
+		for (PriorityQueueItem<T>* item : *(list_))
 		{
 			delete item;
 		}
@@ -149,9 +149,9 @@ namespace structures
 		int index = 0;
 		int maxPriority = (*list_)[0]->getPriority();
 
-		for (PriorityQueueList<T>* item : *list_)
+		for (PriorityQueueItem<T>* item : *list_)
 		{
-			if (item->getPiority() < maxPriority)
+			if (item->getPriority() < maxPriority)
 			{
 				maxPriority = item->getPriority();
 				index = i;
