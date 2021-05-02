@@ -127,7 +127,7 @@ namespace structures
 		{
 			DSRoutines::swap<PriorityQueueItem<T>*>((*this->list_)[itemIndex], (*this->list_)[sonIndex]);
 			itemIndex = sonIndex;
-			sonIndex - this->getGreaterSonIndex(itemIndex);
+			sonIndex = this->getGreaterSonIndex(itemIndex);
 
 		}
 

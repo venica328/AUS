@@ -160,20 +160,19 @@ namespace structures
 		(*children_)[order] = dynamic_cast<KWayTreeNode<T, K>*>(son);
 		if (son != nullptr)
 		{
-			son->getParent(this);
+			son->setParent(this);
 		}
 		if (result != nullptr)
 		{
 			result->setParent(nullptr);
 		}
-
 		return result;
 	}
 
 	template<typename T, int K>
 	inline TreeNode<T>* KWayTreeNode<T, K>::removeSon(int order)
 	{
-		replaceSon(nullptr, order);
+		return replaceSon(nullptr, order);
 	}
 
 	template<typename T, int K>
