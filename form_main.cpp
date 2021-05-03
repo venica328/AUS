@@ -89,12 +89,12 @@ namespace ui
 		factory->registerPrototype(structures::StructureADS::adsTREE_BINARY, new structures::BinaryTree<data::DataType>());
 
 		//TODO 09: SequenceTable: register prototype
-		//factory->registerPrototype(structures::StructureADS::adsTABLE_SEQUENCE_UNSORTED, new structures::UnsortedSequenceTable<data::KeyType, data::DataType>());
-		//factory->registerPrototype(structures::StructureADS::adsTABLE_SEQUENCE_SORTED, new structures::SortedSequenceTable<data::KeyType, data::DataType>());
-		//factory->registerPrototype(structures::StructureADS::adsTABLE_LINKED, new structures::LinkedTable<data::KeyType, data::DataType>());
+		factory->registerPrototype(structures::StructureADS::adsTABLE_SEQUENCE_UNSORTED, new structures::UnsortedSequenceTable<data::KeyType, data::DataType>());
+		factory->registerPrototype(structures::StructureADS::adsTABLE_SEQUENCE_SORTED, new structures::SortedSequenceTable<data::KeyType, data::DataType>());
+		factory->registerPrototype(structures::StructureADS::adsTABLE_LINKED, new structures::LinkedTable<data::KeyType, data::DataType>());
 
 		//TODO 09: HashTable: register prototype
-		//factory->registerPrototype(structures::StructureADS::adsTABLE_HASH, new structures::HashTable<data::KeyType, data::DataType>());
+		factory->registerPrototype(structures::StructureADS::adsTABLE_HASH, new structures::HashTable<data::KeyType, data::DataType>());
 
 		//TODO 10: BinarySearchTree: register prototype
 		//factory->registerPrototype(structures::StructureADS::adsTABLE_BST, new structures::BinarySearchTree<data::KeyType, data::DataType>());
