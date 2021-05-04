@@ -190,7 +190,7 @@ namespace structures
 	template<typename T>
 	inline bool BinaryTreeNode<T>::isLeftSon() const
 	{
-		if (getParent != nullptr)
+		if (getParent() != nullptr)
 		{
 			if (getParent()->getLeftSon() == this)
 			{
@@ -203,7 +203,7 @@ namespace structures
 	template<typename T>
 	inline bool BinaryTreeNode<T>::isRightSon() const
 	{
-		if (getParent != nullptr)
+		if (getParent() != nullptr)
 		{
 			if (getParent()->getRightSon() == this)
 			{

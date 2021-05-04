@@ -97,7 +97,7 @@ namespace ui
 		factory->registerPrototype(structures::StructureADS::adsTABLE_HASH, new structures::HashTable<data::KeyType, data::DataType>());
 
 		//TODO 10: BinarySearchTree: register prototype
-		//factory->registerPrototype(structures::StructureADS::adsTABLE_BST, new structures::BinarySearchTree<data::KeyType, data::DataType>());
+		factory->registerPrototype(structures::StructureADS::adsTABLE_BST, new structures::BinarySearchTree<data::KeyType, data::DataType>());
 
 		//TODO 10: Treap: register prototype
 		//factory->registerPrototype(structures::StructureADS::adsTABLE_TREAP, new structures::Treap<data::KeyType, data::DataType>());
