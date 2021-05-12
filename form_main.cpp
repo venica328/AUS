@@ -100,7 +100,7 @@ namespace ui
 		factory->registerPrototype(structures::StructureADS::adsTABLE_BST, new structures::BinarySearchTree<data::KeyType, data::DataType>());
 
 		//TODO 10: Treap: register prototype
-		//factory->registerPrototype(structures::StructureADS::adsTABLE_TREAP, new structures::Treap<data::KeyType, data::DataType>());
+		factory->registerPrototype(structures::StructureADS::adsTABLE_TREAP, new structures::Treap<data::KeyType, data::DataType>());
 
 		//TODO 11: ForwardStarGraph: register prototype
 		/*
@@ -143,7 +143,7 @@ namespace ui
 		PanelStructures::createAndIntegratePanelStructures(pnlGraph, structures::StructureADT::adtGRAPH);
 
 		//TODO 12: Sorting: register panel for sorting
-		//PanelSorting::createAndIntegratePanelSorting(pnlSorting);
+		PanelSorting::createAndIntegratePanelSorting(pnlSorting);
 	}
 
 	FormMain::~FormMain()
